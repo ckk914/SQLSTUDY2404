@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------------------------------------------
---DDL : 데이터 정의어  : CREATE, ALTER, DROP, TRUNCATE
+--DDL : 데이터 정의어  : CREATE, ALTER, DROP, TRUNCATE, RENAME
 --DML : 데이터 조작어  : SELECT, INSERT, UPDATE, DELETE
 --DCL : 데이터 제어어  : GRANT, REVOKE, COMMIT, ROCKBACK
 
