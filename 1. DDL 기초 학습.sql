@@ -1,4 +1,9 @@
 -------------------------------------------------------------------------------------------------------------------
+--DDL : 데이터 정의어  : CREATE, ALTER, DROP, TRUNCATE
+--DML : 데이터 조작어  : SELECT, INSERT, UPDATE, DELETE
+--DCL : 데이터 제어어  : GRANT, REVOKE, COMMIT, ROCKBACK
+
+-------------------------------------------------------------------------------------------------------------------
 --DDL 정의어 CREATE 테이블 생성
 CREATE TABLE employees (
     employee_id NUMBER(6) PRIMARY KEY,
