@@ -1,4 +1,15 @@
 -------------------------------------------------------------------------------------------------------------------
+--DDL (Data Definition Language): 데이터베이스 스키마를 생성, 변경, 삭제하기 위한 명령어들입니다.
+--    : 데이터 정의어  : CREATE, ALTER, DROP, TRUNCATE, RENAME
+--DML (Data Manipulation Language): 데이터를 검색, 삽입, 수정, 삭제하기 위한 명령어들입니다.
+--    : 데이터 조작어  : SELECT, INSERT, UPDATE, DELETE
+
+--DCL (Data Control Language): 데이터베이스 사용자의 권한을 관리하기 위한 명령어들입니다.  
+--    : 데이터 제어어  : GRANT, REVOKE
+--TCL (Transaction Control Language): 데이터베이스 트랜잭션을 관리하기 위한 명령어들입니다
+--    : 트랜잭션 제어 언어 :  COMMIT, ROCKBACK,SAVEPOINT
+
+-------------------------------------------------------------------------------------------------------------------
 --DDL 정의어 CREATE 테이블 생성
 CREATE TABLE employees (
     employee_id NUMBER(6) PRIMARY KEY,
