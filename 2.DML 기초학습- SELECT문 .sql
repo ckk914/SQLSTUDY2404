@@ -58,7 +58,7 @@ INSERT INTO GOODS
      ;
      -- 잘못 입력해도 취소는 가능
      
-     --UPDATE 1 -> 전체 가격 바뀜
+     --UPDATE 1 -> 전체 나이 바뀜
      UPDATE Tbl_user
      SET age= age+1;
      ;
