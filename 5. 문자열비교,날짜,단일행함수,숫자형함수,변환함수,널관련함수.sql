@@ -19,7 +19,7 @@ INSERT INTO char_compare VALUES ('103', 'SQLD', '  SQLD');
 
 SELECT * FROM char_compare;
 ----------------------------------------------------------------
--- 같아서 조회됨
+-- 같아서 조회됨 'SQLD', 'SQLD'
 SELECT * FROM char_compare
 WHERE sn = '101'
         AND char_4 = char_6;
@@ -29,8 +29,8 @@ WHERE sn = '101'
 WHERE sn = '102'
         AND char_4 = char_6;
 ---------------------------------------------------------------
---조회 안됨!★
--- 길이가 작은 쪽에 뒷 공백 추가 'SQLD  ' != '  SQLD'        
+-- 비교시 => 크기가 작은 쪽에 뒤쪽에 공백 추가 'SQLD  ' != '  SQLD'        
+--  앞에 추가된 것과 다르기 때문에 조회 안됨!★
         SELECT * FROM char_compare
 WHERE sn = '103'
         AND char_4 = char_6;
@@ -40,29 +40,30 @@ SELECT * FROM char_compare
 WHERE sn = '102'
         AND char_4 > char_6;
 ----------------------------------------------------------------
-
 -- 한쪽이 VARCHAR타입일 경우의 비교
 DROP TABLE VARCHAR_COMPARE;
-
+----------------------------------------------------------------
 CREATE TABLE VARCHAR_COMPARE (
     sn CHAR(10),
     char_4 CHAR(4),
     varchar_6 VARCHAR2(6)
 );
-
+----------------------------------------------------------------
 INSERT INTO varchar_compare VALUES ('101', 'SQLD', 'SQLD  ');
 INSERT INTO varchar_compare VALUES ('102', 'SQLD', 'SQLA  ');
 INSERT INTO varchar_compare VALUES ('103', 'SQLD', 'SQLD');
 COMMIT;
-
+----------------------------------------------------------------
 SELECT * FROM varchar_compare;
---varchar는 공백도 문자로 본다~! 'SQLD', 'SQLD  ' 다르다고 판단
+----------------------------------------------------------------
+--varchar는 공백도 비교 대상으로 본다~! 
+-- 'SQLD', 'SQLD  ' 다르다고 판단
 SELECT * FROM varchar_compare
 WHERE sn = '101'
             AND char_4 = varchar_6;
 ----------------------------------------------------------------
 --TRIM :  앞뒤 공백을 지우는 함수 
---같아져서 출력 가능
+--같아져서 출력 가능 'SQLD' = 'SQLD'
 SELECT * FROM varchar_compare
 WHERE sn = '101'
             AND char_4 = TRIM(varchar_6);
