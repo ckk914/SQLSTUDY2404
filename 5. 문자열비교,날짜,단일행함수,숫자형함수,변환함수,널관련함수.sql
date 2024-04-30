@@ -57,7 +57,7 @@ COMMIT;
 SELECT * FROM varchar_compare;
 ----------------------------------------------------------------
 --varchar는 공백도 비교 대상으로 본다~! 
--- 'SQLD', 'SQLD  ' 다르다고 판단
+--★ 'SQLD', 'SQLD  ' 다르다고 판단
 SELECT * FROM varchar_compare
 WHERE sn = '101'
             AND char_4 = varchar_6;
@@ -69,12 +69,12 @@ WHERE sn = '101'
             AND char_4 = TRIM(varchar_6);
 ----------------------------------------------------------------
 --상수 문자열 비교
---'SQLD' =='SQLD  ' 공백 채우고비교
+--'SQLD' =='SQLD  ' 공백 채우고 비교
 SELECT 
 *
 FROM varchar_compare
 WHERE sn = '101'
-        AND char_4 = 'SQLD  '  --TRUE
+        AND char_4 = 'SQLD  '  --TRUE 값 일치 'SQLD', 'SQLD  ;
         ;
 ----------------------------------------------------------------
 -- VARCHAR2 타입으로 선언된 열에 저장된 문자열은
@@ -85,18 +85,19 @@ SELECT
 *
 FROM varchar_compare
 WHERE sn = '101'
-        AND varchar_6 = 'SQLD'  --false
+        AND varchar_6 = 'SQLD'  --false 'SQLD', 'SQLD  '
         ;
 ----------------------------------------------------------------
 --단일행 함수
 --SUBSTR => 1부터3까지 ADDR 을 짤라서 보여줌 
 -- ㄴ 맨앞 글자가 1번부터이다~!
---경기도 출력
+
 --SUBSTR(string, start_position, [length])
 -- 문자열에서 지정된 위치에서 시작하여 특정 길이만큼의 부분 문자열을 반환합니다.
+-- ★배열과는 다르게 첫글자가 1번인게 특징
 ----------------------------------------------------------------
 SELECT 
-    emp_nm,SUBSTR(addr, 1, 3)
+    emp_nm,SUBSTR(addr, 1, 3) --경기도 출력
     FROM tb_emp
     ;
 ----------------------------------------------------------------
@@ -119,7 +120,7 @@ SELECT
     TRIM('    HI   '),                        -- 좌우 공백 제거
     LTRIM('    HELLO    '),              -- 좌 공백 제거
     RTRIM('    HELLO    '),              --우 공백 제거
-    LTRIM('    HELLOhello    ','HE'),              -- 왼쪽에서 발견된 HE를 제거       HELLOhello 
+    LTRIM('    HELLOhello    ','HE'),              -- 왼쪽에서 발견된 HE를 제거       HELLOhello  (공백때문에 삭제 안됨)
     LTRIM('HELLOhello    ','HE')              -- 왼쪽에서 발견된 HE를 제거            LLOhello
 FROM dual;
 ----------------------------------------------------------------
