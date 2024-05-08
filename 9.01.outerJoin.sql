@@ -92,12 +92,12 @@ SELECT
     ON E.dept_cd = D.dept_cd    --오른쪽은 조건 만족한 애들만
 ;
 -------------------------------------------------------------------------------------
---오라클 조인
+--오라클 조인 inner join
 SELECT
  E.emp_nm,   
  D.dept_nm
-    FROM tb_emp E, tb_dept D  --왼쪽은 다 보여주고 
-    WHERE E.dept_cd = D.dept_cd    --오른쪽은 조건 만족한 애들만
+    FROM tb_emp E, tb_dept D  
+    WHERE E.dept_cd = D.dept_cd    
 ;
 ------------------------------------------------------------------------------
 --오라클 조인
@@ -111,8 +111,9 @@ SELECT
  E.emp_nm,   
  D.dept_nm
     FROM tb_emp E, tb_dept D  
-    WHERE E.dept_cd = D.dept_cd (+)   
-;
+    WHERE E.dept_cd = D.dept_cd (+)    -- 조건절에 (+) 붙인다 
+;                                      -- 적용 하고 싶은 곳 반대로 붙인다. 
+                                       -- 오른쪽에 붙였으면 left join
 ------------------------------------------------------------------------------
 -- # RIGHT OUTER JOIN  (A,B 집합 중 B로 생각하면 됨)
 -- 조인되는 오른쪽 테이블은 모두 조회하고, 왼쪽 테이블은 조건에 매칭된것만 조회
@@ -125,6 +126,7 @@ FROM tb_emp E
 RIGHT OUTER JOIN tb_dept D 
 ON E.dept_cd = D.dept_cd
 ;
+-------------------------------------------
 --null	포스트코로나팀  이름 없는 부서 2개 조회됨*
 --null	4차산업혁명팀
 -------------------------------------------
